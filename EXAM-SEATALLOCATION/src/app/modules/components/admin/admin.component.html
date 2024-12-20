@@ -1,0 +1,33 @@
+<div class="bg-image" style="background-image: url('assets/img/backImg.jpeg');">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card shadow-lg p-4 rounded" style="width: 400px;">
+            <!-- Logo -->
+            <div class="text-center mb-4">
+                <img src="assets/img/dyplogo.jpg" alt="Logo" class="img-fluid size" style="max-height: 80px;">
+            </div>
+            <!-- Title -->
+            <h3 class="text-center mb-4 fw-bold font">Admin Login</h3>
+            <!-- Form -->
+            <form (ngSubmit)="onSubmit()" #adminForm="ngForm">
+                <!-- Email Field -->
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label"><b>Email</b></label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email"
+                        [(ngModel)]="admin.email" required />
+                </div>
+                <!-- Password Field -->
+                <div class="form-group mb-3">
+                    <label for="password" class="form-label"><b>Password</b></label>
+                    <input type="password" id="password" name="password" class="form-control"
+                        placeholder="Enter your password" [(ngModel)]="admin.password" required />
+                </div>
+                <!-- Submit Button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-lg" [disabled]="!adminForm.valid">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<section class="section">
+	<div class="row">
+		<!-- FORM Panel -->
+		<div class="col-md-8">
+			<form [formGroup]="form" (ngSubmit)="formSubmit()">
+				<div class="card">
+					<div class="card-header bg-secondary">
+						<span style="color:white;">{{ editMode ? 'Update Block' : 'Add Block' }}</span>
+					</div>
+					<br />
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label">Block Number</label>
+									<input type="text" class="form-control" formControlName="blockNumber" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label">Capacity</label>
+									<input type="text" class="form-control" formControlName="capacity" />
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="card-footer">
+						<div class="row">
+							<div class="col-md-12">
+								<input type="submit" name="submit" [value]="editMode ? 'Update' : 'Save'"
+									class="btn btn-primary mx-2" />
+								<button type="button" class="btn btn-secondary" *ngIf="editMode"
+									(click)="cancelEdit()">Cancel</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- FORM Panel -->
+
+		<!-- Table Panel -->
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-body">
+					<!-- Search Input -->
+					<div class="row mb-1 mt-3">
+						<div class="col-md-6">
+							<input type="text" class="form-control" placeholder="Search blocks..."
+								[(ngModel)]="searchTerm" (change)="filterBlocks()" />
+						</div>
+					</div>
+
+					<br />
+					<table class="table table-bordered table-hover table-striped">
+						<thead class="bg-secondary">
+							<tr style="color:white;">
+								<th class="text-center">Sr.No</th>
+								<th class="text-center">Block Number</th>
+								<th class="text-center">Capacity</th>
+								<th class="text-center">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let block of filteredBlocks; let i = index">
+								<td class="text-center">{{ i + 1 }}</td>
+								<td class="text-center">{{ block.blockNumber }}</td>
+								<td class="text-center">{{ block.capacity }}</td>
+								<td class="text-center">
+									<button class="btn btn-sm btn-warning mx-2"
+										(click)="editBlock(block)">Update</button>
+									<button (click)="deleteBlock(block.blockId)"
+										class="btn btn-sm btn-danger">Delete</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!-- Table Panel -->
+	</div>
+</section>

@@ -1,0 +1,12 @@
+.table {
+    font-size: 14px;
+}
+
+thead th {
+    background-color: #6c757d;
+    color: #ffffff;
+}
+
+.card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

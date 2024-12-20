@@ -1,0 +1,75 @@
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+
+  <ul class="sidebar-nav" id="sidebar-nav">
+
+    <li class="nav-item">
+      <a class="nav-link " routerLink="/dashboard">
+        <i class="bi bi-grid"></i>
+        <span>Dashboard</span>
+      </a>
+    </li><!-- End Dashboard Nav -->
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" routerLink="/dashboard/home" data-bs-target="#components-nav"
+        data-bs-toggle="collapse" href="#">
+        <i class="bi bi-menu-button-wide"></i>
+        <span>Blocks</span>
+      </a>
+    </li><!-- End Dashboard Nav -->
+
+    <li class="nav-item">
+      <a routerLink="/dashboard/student-info" class="nav-link collapsed" data-bs-target="#components-nav"
+        data-bs-toggle="collapse" href="#">
+        <i class="bi bi-menu-button-wide"></i><span>Add Student Info</span>
+      </a>
+
+    </li><!-- End Components Nav -->
+
+    <li class="nav-item">
+      <a routerLink="/dashboard/add-block" class="nav-link collapsed" data-bs-target="#forms-nav"
+        data-bs-toggle="collapse" href="#">
+        <i class="bi bi-journal-text"></i><span>Add Block</span>
+      </a>
+
+    </li><!-- End Forms Nav -->
+
+    <li class="nav-item">
+      <a routerLink="/dashboard/add-courses" class="nav-link collapsed" data-bs-target="#forms-nav"
+        data-bs-toggle="collapse" href="#">
+        <i class="bi bi-journal-text"></i><span>Add Courses</span>
+      </a>
+
+    </li><!-- End Forms Nav -->
+
+    <li class="nav-item">
+      <a routerLink="/dashboard/add-supervisor" class="nav-link collapsed" data-bs-target="#forms-nav"
+        data-bs-toggle="collapse" href="#">
+        <i class="bi bi-journal-text"></i><span>Add Supervisor</span>
+      </a>
+
+    </li><!-- End Forms Nav -->
+
+    <li class="nav-item">
+      <a routerLink="/dashboard/show-studentinfo" class="nav-link collapsed" data-bs-target="#forms-nav"
+        data-bs-toggle="collapse" href="#">
+        <i class="bi bi-journal-text"></i><span>Show Student Info</span>
+      </a>
+
+    </li><!-- End Forms Nav -->
+
+    <div class="row col-10">
+      <li class="col-12">
+        <button class="btn btn-warning w-100" (click)="clearAllSeatsAllocation()">Clear All Seat Allocations</button>
+      </li>
+      <li class="col-12 mt-2">
+        <button class="btn btn-primary w-100" (click)="reallocateSeats()">Reallocate Seats</button>
+      </li>
+    </div>
+
+
+
+
+  </ul>
+
+</aside>

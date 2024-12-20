@@ -1,0 +1,44 @@
+.table {
+    font-size: 0.95rem;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .table .thead-dark th {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+  }
+  
+  .card {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .card-header {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .badge-success {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .badge-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .btn-outline-warning:hover {
+    background-color: #ffc107;
+    color: #fff;
+  }
+  
+  .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  

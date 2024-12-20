@@ -1,0 +1,68 @@
+/* Center the form */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+.bg-image {
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 0; /* Remove any default margins */
+  padding: 0; /* Remove any padding */
+  overflow: hidden;
+
+  
+}
+
+  
+  .card {
+    background-color: #1C3F75;
+    margin-left: 180px;
+    /* border: outset; */
+    /* background-color: transparent; */
+    box-shadow: 5px solid transparent;
+  }
+  
+  img {
+    filter: drop-shadow(2px 4px 6px gray);
+  }
+  
+  label {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  input {
+    padding: 5px;
+    font-size: 14px;
+    height: 30px;
+  }
+  
+  .btn {
+    font-weight: bold;
+    color: #ffff;
+    background-color: #3ea0ff;
+    padding: 4px;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+
+.font{
+  font-size: 40px;
+  color: #ffff;
+}
+
+.size{
+  border-radius: 50%;
+}
+
+label{
+  color: #ffff;
+}

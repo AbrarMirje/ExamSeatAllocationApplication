@@ -1,0 +1,307 @@
+body {
+    background-color: #f4f4f4;
+}
+
+.hall-ticket {
+    border: 3px solid #004a8f;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: white;
+}
+
+.ticket-header {
+    background-color: #004a8f;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+}
+
+.ticket-header img {
+    max-height: 100px;
+    margin-bottom: 10px;
+}
+
+.student-details .label {
+    font-weight: bold;
+    color: #004a8f;
+}
+
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    opacity: 0.1;
+    font-size: 100px;
+    color: #004a8f;
+}
+
+.label {
+    font-weight: bold;
+}
+
+
+.seat {
+    width: 80px;
+    height: 40px;
+    margin: 5px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 800px;
+    cursor: pointer;
+    font-size: .8rem;
+  }
+  
+  .card {
+    min-width: 690px;
+  }
+  
+  .card-body {
+    height: 600px;
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 500px) {
+    .seat {
+      width: 5px;
+      height: 5px;
+      margin: 2px;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 800px;
+      cursor: pointer;
+      font-size: .4rem;
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .seat {
+      width: 30px;
+      height: 20px;
+      margin: 2px;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 800px;
+      cursor: pointer;
+      font-size: .4rem;
+    }
+  }
+  
+  @media (max-width: 1300px) {
+    .seat {
+      width: 40px;
+      height: 40px;
+      margin: 2px;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 800px;
+      cursor: pointer;
+      font-size: .6rem;
+    }
+  }
+  
+  
+  
+    .available {
+      background-color: #28a745;
+      color: white;
+    }
+  
+    .unavailable {
+      background-color: #dc3545;
+      color: white;
+      cursor: not-allowed;
+    }
+  
+    .selected {
+      background-color: #ffc107;
+      color: black;
+    }
+  
+    .seat-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      grid-gap: 10px;
+    }
+  
+    .seat-row {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .seat-info {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  
+    .bg-color{
+      background-color: #34495E ;
+      color: #FFFFFF;
+      font-weight: bold;
+      
+    }
+  
+  
+    .radius {
+      /* background-color: ; */
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease-in-out; /* Smooth animation for box-shadow */
+  }
+  
+  .radius:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+  }
+  
+  
+  
+  
+  
+  .modal-body {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #495057;
+  }
+  
+  .table th,
+  .table td {
+    padding: 12px;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .table-striped tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  
+  .modal-header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+  }
+  
+  .btn {
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+  }
+  
+  .btn-close {
+    background: transparent;
+    border: none;
+    color: #fff;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  table td {
+    font-weight: bold;
+  }
+
+
+  /* Seating arrangement */
+  .container {
+    max-width: 1000px;
+    padding: 0 15px;
+}
+
+.block-header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.seat-container {
+    width: 100%;
+}
+
+.seat-button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin: 5px;
+    flex: 1;
+    max-width: calc(10% - 10px);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.seat-button:hover {
+    background-color: #219a52;
+}
+
+.seat-row {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.row-wrapper {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.direction-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.arrow {
+    color: #27ae60;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.direction-text {
+    color: #666;
+    font-size: 12px;
+    margin: 0 5px;
+}

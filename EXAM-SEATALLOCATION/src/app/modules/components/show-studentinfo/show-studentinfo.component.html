@@ -1,0 +1,61 @@
+<div class="col-md-8">
+  <div class="card">
+    <div class="card-body">
+      <!-- Course Dropdown -->
+      <div class="form-group mb-3">
+        <label for="courseSelect"><b>Course:</b></label>
+        <select id="courseSelect" class="form-control" [(ngModel)]="selectedCourse" (change)="onCourseChange()">
+          <option value="">Select Course</option>
+          <option *ngFor="let course of courses" [value]="course.courseName">
+            {{ course.courseName }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Year Dropdown -->
+      <div class="form-group mb-3">
+        <label for="yearSelect"><b>Year:</b></label>
+        <select id="yearSelect" class="form-control" [(ngModel)]="selectedYear" (change)="filterStudents()" [disabled]="!selectedCourse">
+          <option value="">Select Year</option>
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+
+      <!-- Search Box -->
+      <div class="form-group mb-3">
+        <label for="searchBox"><b>Search Student:</b></label>
+        <input id="searchBox" type="text" class="form-control" [(ngModel)]="searchQuery" (input)="searchStudents()" placeholder="Search by anything...">
+      </div>
+
+      <!-- Students Table -->
+      <table class="table table-bordered table-hover table-striped">
+        <thead class="bg-secondary">
+          <tr style="color: white;">
+            <th class="text-center">Sr.No</th>
+            <th class="text-center">PRN Number</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Branch</th>
+            <th class="text-center">Semester</th>
+            <th class="text-center">Mobile No</th>
+            <th class="text-center">Seat Number</th>
+            <th class="text-center">Block No</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of filteredStudents; let i = index">
+            <td class="text-center">{{ i + 1 }}</td>
+            <td class="text-center">{{ student.prnNumber }}</td>
+            <td class="text-center">{{ student.firstName }} {{ student.lastName }}</td>
+            <td class="text-center">{{ student.courseName }}</td>
+            <td class="text-center">{{ student.semester }}</td>
+            <td class="text-center">{{ student.mobileNumber }}</td>
+            <td class="text-center">{{ student.seatNumber }}</td>
+            <td class="text-center">{{ student.blockNumber }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    
+    </div>
+  </div>
+</div>

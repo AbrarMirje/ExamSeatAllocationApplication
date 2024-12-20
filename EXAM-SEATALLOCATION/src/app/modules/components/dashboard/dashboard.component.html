@@ -1,0 +1,12 @@
+<app-navbar></app-navbar>
+
+<main id="main" class="main">
+  <app-sidebar></app-sidebar> <!-- Sidebar is outside the router-outlet area -->
+
+  <!-- Main content area -->
+  <section class="section dashboard">
+    <div class="row">
+      <router-outlet></router-outlet> <!-- Dynamic content will be displayed here -->
+    </div>
+  </section>
+</main>

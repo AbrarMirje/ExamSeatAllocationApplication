@@ -1,0 +1,18 @@
+<div class="form-container m-auto mt-5">
+    <h2 class="border-bottom mb-3">Student Registration</h2>
+    <form [formGroup]="form" (ngSubmit)="formSubmit()">
+        <div class="form-group">
+            <label for="contact">Contact Number</label>
+            <input type="tel" id="contact" formControlName="mobileNumber" placeholder="Enter your contact number" />
+        </div>
+
+        <div class="form-group">
+            <label for="prn">PRN Number</label>
+            <input type="text" id="prn" formControlName="prnNumber" placeholder="Enter your PRN number" />
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>

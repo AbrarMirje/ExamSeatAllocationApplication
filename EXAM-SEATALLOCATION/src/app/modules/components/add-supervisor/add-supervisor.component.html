@@ -1,0 +1,111 @@
+<section class="section">
+    <div class="row">
+      <!-- Form Panel -->
+      <div class="col-md-8">
+        <form [formGroup]="form" (ngSubmit)="formSubmit()">
+          <div class="card">
+            <div class="card-header bg-secondary">
+              <span style="color: white;">{{ isUpdating ? 'Update Supervisor' : 'Add Supervisor' }}</span>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Supervisor Name</label>
+                    <input type="text" class="form-control" formControlName="supervisorName" />
+                    <small *ngIf="form.get('supervisorName')?.invalid && form.get('supervisorName')?.touched" class="text-danger">Name is required and should contain only letters</small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Contact</label>
+                    <input type="text" class="form-control" formControlName="contact" />
+                    <small *ngIf="form.get('contact')?.invalid && form.get('contact')?.touched" class="text-danger">Valid 10-digit contact number is required</small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" formControlName="email" />
+                    <small *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-danger">Valid email is required</small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Department Name</label>
+                    <input type="text" class="form-control" formControlName="departmentName" />
+                    <small *ngIf="form.get('departmentName')?.invalid && form.get('departmentName')?.touched" class="text-danger">Department is required</small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Block Number</label>
+                    <select class="form-control" formControlName="blockNumber">
+                      <option *ngFor="let block of blocks" [value]="block.blockId">
+                        {{ block.blockNumber }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">{{ isUpdating ? 'Update' : 'Add' }}</button>
+            </div>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Supervisors Table -->
+      <div class="col-md-8 mt-3 ">
+        <div class="card shadow-lg">
+          <div class="card-header bg-dark text-white d-flex align-items-center justify-content-between">
+            <h5 class="m-0">Supervisors</h5>
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <div class="card-body">
+            <!-- Search Box -->
+            <div class="row mb-3 mt-3">
+              <div class="col-md-12">
+                <input type="text" class="form-control" placeholder="Search by any field" [(ngModel)]="searchTerm" (input)="filterSupervisors()" />
+              </div>
+            </div>
+  
+            <!-- Supervisors Table -->
+            <table class="table table-hover table-striped table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Sr.no</th>
+                  <th>Name</th>
+                  <th>Contact</th>
+                  <th>Email</th>
+                  <th>Department</th>
+                  <th>Block</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let supervisor of filteredSupervisors; let i = index">
+                  <td class="align-middle text-center">{{ i + 1 }}</td>
+                  <td class="align-middle">{{ supervisor.superVisorName }}</td>
+                  <td class="align-middle">{{ supervisor.contactNumber }}</td>
+                  <td class="align-middle">{{ supervisor.email }}</td>
+                  <td class="align-middle">{{ supervisor.departName }}</td>
+                  <td class="align-middle">{{ supervisor.block }}</td>
+                  <td class="text-center align-middle">
+                    <button class="btn btn-sm btn-outline-warning me-1 my-1" (click)="updateSupervisor(supervisor)">
+                      <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" (click)="deleteSupervisor(supervisor.supervisorId)">
+                      <i class="fas fa-trash"></i> Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

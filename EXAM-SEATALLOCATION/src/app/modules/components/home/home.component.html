@@ -1,0 +1,112 @@
+<div class="row">
+  <div *ngFor="let b of blocks" class="col-lg-12 col-12">
+    <div class="card p-3 shadow-xl radius">
+      <div class="row">
+
+        <div class="col-1">
+          <div class="align-item-between justify-content-between" style="margin-top: 120px;">
+            <h5 class="text-center fw-bold">START</h5>
+          </div>
+        </div>
+
+
+        <div class="col-10 p-0 ">
+          <div class="card-header pl-2 pt-2 p-0 m-0 shadow-sm p-2 bg-color mb-2 d-flex justify-content-between">
+            <span>BLOCK NO: {{ b.blockNumber }} | Supervisor: {{ b.supervisorName }}</span>
+            <!-- Trash Icon for Deletion -->
+            <i class="bi bi-trash text-danger" (click)="deleteBlock(b.blockId)"></i>
+          </div>
+          <div class="seat-grid">
+            <!-- Display occupied seats -->
+            <a (click)="getStudentinfo(b.blockId, s.seatNumber)" *ngFor="let s of b.seatAllocations; let ind = index;"
+              type="button" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal-' + b.blockId">
+              <div class="seat unavailable">
+                {{ s.seatNumber }}
+                <span>
+                  <div class="col-4 px-3" *ngIf="ind == 0">
+                    <img class="mb-4" src="assets/img/arrow-right-solid.svg" alt="loading" />
+                  </div>
+                </span>
+              </div>
+            </a>
+            <!-- Fill remaining seats with available placeholders -->
+            <ng-container *ngFor="let i of [].constructor(b.capacity - b.seatAllocations.length); let index = index">
+              <div class="seat available" onclick="toggleSelection(this)">
+                {{b.seatAllocations.length + (index + 1)}}
+                <span>
+                  <div class="col-4 px-3" *ngIf="index == 0 && !b.seatAllocations.length">
+                    <img class="mb-4" src="assets/img/arrow-right-solid.svg" alt="loading" />
+                  </div>
+                </span>
+                <span>
+                  <div class="col-4 px-3" *ngIf="(b.seatAllocations.length + (index + 1)) == 11">
+                    <img class="mb-4" src="assets/img/arrow-right-solid.svg" alt="loading" />
+                  </div>
+                </span>
+                <span>
+                  <div class="col-4 px-3" *ngIf="(b.seatAllocations.length + (index + 1)) == 21">
+                    <img class="mb-4" src="assets/img/arrow-right-solid.svg" alt="loading" />
+                  </div>
+                </span>
+              </div>
+            </ng-container>
+
+          </div>
+        </div>
+
+        <div class="col-1">
+          <div class="align-item-between justify-content-between" style="margin-top: 120px;">
+            <h5 class="text-center fw-bold">END</h5>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal-{{ b.blockId }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Block No. {{ b.blockNumber }}</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered table-striped">
+              <tbody>
+                <tr>
+                  <th scope="row">First Name</th>
+                  <td>{{ studentInfo.firstName }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Last Name</th>
+                  <td>{{ studentInfo.lastName }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Course Name</th>
+                  <td>{{ studentInfo.courseName }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Roll Number</th>
+                  <td>{{ studentInfo.rollNumber }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">PRN Number</th>
+                  <td>{{ studentInfo.prnNumber }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Semester</th>
+                  <td>{{ studentInfo.semester }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

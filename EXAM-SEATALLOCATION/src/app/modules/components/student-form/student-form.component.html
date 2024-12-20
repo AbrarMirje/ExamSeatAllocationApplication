@@ -1,0 +1,171 @@
+<section class="section">
+	<div class="row">
+		<!-- FORM Panel -->
+		<div class="col-md-12">
+			<form [formGroup]="form" (ngSubmit)="formSubmit()">
+				<div class="card">
+					<div class="card-header bg-secondary">
+						<span style="color:white;">Student Form</span>
+					</div>
+					<br />
+					<div class="card-body">
+						<input type="hidden" name="id" />
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label">Roll Number</label>
+									<input type="text" class="form-control" formControlName="rollNumber"
+										[class.is-invalid]="form.get('rollNumber')?.invalid && form.get('rollNumber')?.touched" />
+									<div *ngIf="form.get('rollNumber')?.invalid && form.get('rollNumber')?.touched"
+										class="invalid-feedback">
+										Roll number must be a valid number and cannot contain characters.
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label">Mobile Number</label>
+									<input type="text" class="form-control" formControlName="mobileNumber"
+										[class.is-invalid]="form.get('mobileNumber')?.invalid && form.get('mobileNumber')?.touched" />
+									<div *ngIf="form.get('mobileNumber')?.invalid && form.get('mobileNumber')?.touched"
+										class="invalid-feedback">
+										Mobile number must be 10 digits and should not contain any characters.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label">First Name</label>
+									<input type="text" class="form-control" formControlName="firstName"
+										[class.is-invalid]="form.get('firstName')?.invalid && form.get('firstName')?.touched" />
+									<div *ngIf="form.get('firstName')?.invalid && form.get('firstName')?.touched"
+										class="invalid-feedback">
+										First name is required.
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label">Last Name</label>
+									<input type="text" class="form-control" formControlName="lastName"
+										[class.is-invalid]="form.get('lastName')?.invalid && form.get('lastName')?.touched" />
+									<div *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched"
+										class="invalid-feedback">
+										Last name is required.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label">Student Course</label>
+									<select class="form-control" formControlName="studentClass"
+										[class.is-invalid]="form.get('studentClass')?.invalid && form.get('studentClass')?.touched">
+										<option value="" disabled selected>Select Course</option>
+										<option [value]="course.courseId" *ngFor="let course of courses">
+											{{ course.courseName }}
+										</option>
+									</select>
+									<div *ngIf="form.get('studentClass')?.invalid && form.get('studentClass')?.touched"
+										class="invalid-feedback">
+										Please select a class.
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label">Student Year</label>
+									<select class="form-control" formControlName="year"
+										[class.is-invalid]="form.get('year')?.invalid && form.get('year')?.touched">
+										<option value="" disabled selected>Select Year</option>
+										<option value="I">I</option>
+										<option value="II">II</option>
+										<option value="III">III</option>
+										<option value="IV">IV</option>
+									</select>
+									<div *ngIf="form.get('year')?.invalid && form.get('year')?.touched"
+										class="invalid-feedback">
+										Please select a year.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label me-2">Semester</label>
+									<input type="text" class="form-control outline" formControlName="semester"
+										[class.is-invalid]="form.get('semester')?.invalid && form.get('semester')?.touched" />
+									<div *ngIf="form.get('semester')?.invalid && form.get('semester')?.touched"
+										class="invalid-feedback">
+										Semester is required.
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label me-2">Select Gender</label>
+									<div>
+										<input type="radio" formControlName="gender" id="male" value="Male" />
+										<label for="male" class="mx-1">Male</label>
+										<input type="radio" formControlName="gender" id="female" value="Female" />
+										<label for="female" class="mx-1">Female</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="card-footer mt-3">
+						<div class="d-grid col-6 mx-auto">
+							<button class="btn btn-primary" type="submit" [disabled]="form.invalid">ADD TO LIST</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- FORM Panel -->
+
+		<div class="col-md-10">
+			<div class="card">
+				<div class="card-body"><br>
+					<table class="table table-bordered table-hover table-striped">
+						<thead class="bg-secondary">
+							<tr style="color:white;">
+								<th class="text-center">Sr.No</th>
+								<th class="text-center">Roll No</th>
+								<th class="text-center">Mobile No</th>
+								<th class="text-center">First Name</th>
+								<th class="text-center">Last Name</th>
+								<!-- <th class="text-center">Student Course</th> -->
+								<th class="text-center">Year</th>
+								<th class="text-center">Semester</th>
+								<th class="text-center">Gender</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let student of students; let i = index">
+								<td class="text-center">{{ i + 1 }}</td>
+								<td class="text-center">{{ student.rollNumber }}</td>
+								<td class="text-center">{{ student.mobileNumber }}</td>
+								<td class="text-center">{{ student.firstName }}</td>
+								<td class="text-center">{{ student.lastName }}</td>
+								<!-- <td class="text-center">{{ getCourseName(student.course.courseId) }}</td> -->
+								<td class="text-center">{{ student.year }}</td>
+								<td class="text-center">{{ student.semester }}</td>
+								<td class="text-center">{{ student.gender }}</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="d-grid col-6 mx-auto mt-3">
+						<button class="btn btn-success" (click)="addAllStudents()">Add All Students</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

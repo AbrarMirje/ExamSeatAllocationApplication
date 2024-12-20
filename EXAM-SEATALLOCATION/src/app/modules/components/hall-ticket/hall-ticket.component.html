@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="hall-ticket position-relative">
+        <!-- University Watermark -->
+        <div class="watermark">DYPATU</div>
+
+        <div class="ticket-header">
+            <img src="assets/img/dyplogo.jpg" alt="DY Patil University Logo" />
+            <h2>Examination Hall Ticket</h2>
+            <h4>Academic Year 2023-2024</h4>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row mb-3">
+                    <div class="col-4 label">Student Name:</div>
+                    <div class="col-8">
+                        {{ studentData?.firstName }} {{ studentData?.lastName }}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-4 label">PRN Number:</div>
+                    <div class="col-8">{{ studentData?.prnNumber }}</div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-4 label">Roll Number:</div>
+                    <div class="col-8">{{ studentData?.rollNumber }}</div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-4 label">Program:</div>
+                    <div class="col-8">{{ studentData?.courseName }}</div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-4 label">Semester:</div>
+                    <div class="col-8">{{ studentData?.semester }}</div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-4 label">Block Number:</div>
+                    <div class="col-8">{{ studentData?.blockNumber }}</div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-4 label">Seat Number:</div>
+                    <div class="col-8">{{ studentData?.seatNumber }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-6 text-center">
+                <strong>Controller of Examinations</strong>
+            </div>
+            <div class="col-6 text-center">
+                <strong>Principal's Signature</strong>
+            </div>
+        </div>
+
+        <div class="text-center mt-3 text-muted">
+            <small>
+                Note: No student will be allowed to enter the examination hall without
+                this hall ticket
+            </small>
+        </div>
+    </div>
+
+    <!-- Seating arrangement -->
+    <div class="container mt-4">
+        <div class="block-header d-flex justify-content-between align-items-center">
+            <span>BLOCK NO: {{ studentData?.blockNumber }}</span>
+        </div>
+
+        <div class="seat-container">
+            <div class="row-wrapper" *ngFor="let row of seatRows">
+                <div class="seat-row">
+                    <button *ngFor="let seat of row" class="seat-button text-center" [ngStyle]="{
+                            'background-color': seat.index+1 === highlightedSeatIndex ? 'red' : '',
+                            color: seat.index === highlightedSeatIndex ? 'white' : ''
+                        }">
+                        <!-- Show seat number for all seats except the highlighted one -->
+                        {{ seat.index+1 === highlightedSeatIndex ? studentData.seatNumber : seat.seatNumber }}
+                    </button>
+                </div>
+                <div class="direction-indicator">
+                    <span class="direction-text">START</span>
+                    <span class="arrow">➔</span>
+                    <span class="direction-text">END</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <button class="btn btn-primary mx-2 my-4" (click)="downloadPagePDF()">
+            Download
+        </button>
+    </div>
+</div>
