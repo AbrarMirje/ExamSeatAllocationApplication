@@ -6,7 +6,6 @@
         <div class="ticket-header">
             <img src="assets/img/dyplogo.jpg" alt="DY Patil University Logo" />
             <h2>Examination Hall Ticket</h2>
-            <h4>Academic Year 2023-2024</h4>
         </div>
 
         <div class="row">
@@ -76,7 +75,7 @@
         <div class="seat-container">
             <div class="row-wrapper" *ngFor="let row of seatRows">
                 <div class="seat-row">
-                    <button *ngFor="let seat of row" class="seat-button text-center" [ngStyle]="{
+                    <button *ngFor="let seat of row" class="seat-button" [ngStyle]="{
                             'background-color': seat.index+1 === highlightedSeatIndex ? 'red' : '',
                             color: seat.index === highlightedSeatIndex ? 'white' : ''
                         }">
